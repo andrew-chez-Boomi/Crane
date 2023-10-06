@@ -56,22 +56,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RootShipmentConf'
-        default:
-          $ref: '#/components/responses/default'
-        '400':
-          $ref: '#/components/responses/400'
-        '500':
-          $ref: '#/components/responses/500'
-        '522':
-          $ref: '#/components/responses/522'
-        '401':
-          $ref: '#/components/responses/401'
-        '413':
-          $ref: '#/components/responses/413'
-        '404':
-          $ref: '#/components/responses/404'
-        '503':
-          $ref: '#/components/responses/503'
 components:
   schemas:
     RootShipmentConf:
