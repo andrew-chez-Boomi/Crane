@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.1
 info:
   title: Warehouse shipment confirmation
   description: Returns shipment confirmation based on ProjectLookupCode (Required) plus OrderLookupCode or ShipmentLookupCode (At least one required).
@@ -13,11 +13,11 @@ info:
     url: https://craneww.com/
   version: 1.0
 servers:
-  - url: https://api-uat.craneww.com/dev/ws/rest/warehouse/v0/shipment/Shipmentconfirmation/shipmentdetails
+  - url: https://api-uat.craneww.com/dev/ws/rest/warehouse/v0
 tags:
   - name: Shipmentconfirmation
 paths:
-  /Shipmentconfirmation/shipmentdetails:
+  /shipment//Shipmentconfirmation/shipmentdetails:
     get:
       tags:
         - Shipmentconfirmation
