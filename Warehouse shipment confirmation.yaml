@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.0
 info:
   title: Warehouse shipment confirmation
   description: Returns shipment confirmation based on ProjectLookupCode (Required) plus OrderLookupCode or ShipmentLookupCode (At least one required).
