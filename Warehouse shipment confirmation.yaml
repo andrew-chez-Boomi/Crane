@@ -17,7 +17,7 @@ servers:
 tags:
   - name: Shipmentconfirmation
 paths:
-  /shipment//Shipmentconfirmation/shipmentdetails:
+  /shipment/Shipmentconfirmation/shipmentdetails:
     get:
       tags:
         - Shipmentconfirmation
