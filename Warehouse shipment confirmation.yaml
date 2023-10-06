@@ -280,6 +280,13 @@ components:
                 type: string
               WarehouseLookupCode:
                 type: string
+  securitySchemes:
+    X-API-Key:
+      type: apiKey
+      name: X-API-Key
+      in: header
+security:
+  - X-API-Key: []                
 responses:
   default:
     description: Unidentified Exception
@@ -297,11 +304,4 @@ responses:
     description: Not Found - Invalid URL path.
   '503':
     description: Service Unavailable - The caller has hit a throttle or the request was rejected because the Atom is starting or stopping.
-components:
-  securitySchemes:
-    X-API-Key:
-      type: apiKey
-      name: X-API-Key
-      in: header
-security:
-  - X-API-Key: []
+
