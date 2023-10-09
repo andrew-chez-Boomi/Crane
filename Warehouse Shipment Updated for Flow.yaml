@@ -1,0 +1,348 @@
+---
+openapi: 3.0.1
+info:
+  title: Warehouse shipment confirmation
+  description: Returns shipment confirmation based on ProjectLookupCode (Required)
+    plus OrderLookupCode or ShipmentLookupCode (At least one required). Returns
+    goods received based on ProjectLookupCode and OrderLookupCode (Both
+    required)
+  termsOfService: https://craneww.com/
+  contact:
+    name: Crane Worldwide Logistics
+    url: https://craneww.com/
+    email: info@craneww.com
+  license:
+    name: Crane License
+    url: https://craneww.com/
+  version: 1.0.0
+servers:
+  - url: https://api-uat.craneww.com/dev/ws/rest/warehouse/v0
+tags:
+  - name: Shipmentconfirmation
+paths:
+  /shipment/Shipmentconfirmation/shipmentdetails:
+    get:
+      tags:
+        - Shipmentconfirmation
+      summary: "[API-Process] Shipment confirmation/Goods Received"
+      description: This is an API that takes Project look up code, order look up code,
+        or ShipmentLookupCode. Project look up code is mandatory, please connect
+        with Crane representative for project look up code.
+      parameters:
+        - name: projectlookupcode
+          in: query
+          description: projectlookupcode, connect with crane for your project code
+          required: true
+          schema:
+            type: string
+        - name: shipmentlookupcode
+          in: query
+          description: shipment look up code is optional
+          required: false
+          schema:
+            type: string
+        - name: orderlookupcode
+          in: query
+          description: order look up code, can be optional. Either shipment or
+            orderlookupcode is needed.
+          required: false
+          schema:
+            type: string
+        - name: milestone
+          in: query
+          description: values can be ship, pick, receive
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RootShipmentConf"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "413":
+          $ref: "#/components/responses/413"
+        "500":
+          $ref: "#/components/responses/500"
+        "503":
+          $ref: "#/components/responses/503"
+        "522":
+          $ref: "#/components/responses/522"
+        default:
+          $ref: "#/components/responses/default"
+components:
+  schemas:
+    Addresses:
+      type: object
+      properties:
+        AccountLookupCode:
+          type: string
+    RootShipmentConf:
+      type: object
+      properties:
+        OrderHeaders:
+          type: array
+          items:
+            type: object
+            properties:
+              Addresses:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    AccountLookupCode:
+                      type: string
+                    AccountName:
+                      type: string
+                    AccountType:
+                      type: string
+                    AddressAttentionOf:
+                      type: string
+                    AddressCity:
+                      type: string
+                    AddressCountry:
+                      type: string
+                    AddressLine1:
+                      type: string
+                    AddressLine2:
+                      type: string
+                    AddressPostalCode:
+                      type: string
+                    AddressState:
+                      type: string
+                    AddressType:
+                      type: string
+                    ContactFirstName:
+                      type: string
+                    ContactLastName:
+                      type: string
+                    ContactPrimaryEmail:
+                      type: string
+                    ContactPrimaryTelephone:
+                      type: string
+                    ContactTitle:
+                      type: string
+                    ContactType:
+                      type: string
+              Milestone:
+                type: string
+              OrderClass:
+                type: string
+              OrderLines:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    EstablishmentIdentifier:
+                      type: string
+                    LineNumber:
+                      type: string
+                    Marks:
+                      type: string
+                    MaterialAlias:
+                      type: string
+                    MaterialLookupCode:
+                      type: string
+                    MaterialPackagingName:
+                      type: string
+                    OrderLineTasks:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          ActualPackagedAmount:
+                            type: string
+                          EstablishmentIdentifier:
+                            type: string
+                          LicensePlates:
+                            type: array
+                            items:
+                              required:
+                                - SerialNumbers
+                              type: object
+                              properties:
+                                GrossWeight:
+                                  type: string
+                                SerialNumbers:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      LookupCode:
+                                        type: string
+                                      SerialUDF:
+                                        type: string
+                                SourceLP:
+                                  type: string
+                                TargetLP:
+                                  type: string
+                          LotLookupCode:
+                            type: string
+                          MaterialAlias:
+                            type: string
+                          MaterialLookupCode:
+                            type: string
+                          VendorLotLookupCode:
+                            type: string
+                    PackagedAmount:
+                      type: string
+                    ShipmentLookupCode:
+                      type: string
+                    UnitPrice:
+                      type: string
+              OrderLookupCode:
+                type: string
+              OwnerReference:
+                type: string
+              ProjectLookupCode:
+                type: string
+              VendorReference:
+                type: string
+        ShipmentHeaders:
+          type: array
+          items:
+            type: object
+            properties:
+              Addresses:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    AccountLookupCode:
+                      type: string
+                    AccountName:
+                      type: string
+                    AccountType:
+                      type: string
+                    AddressAttentionOf:
+                      type: string
+                    AddressCity:
+                      type: string
+                    AddressCountry:
+                      type: string
+                    AddressLine1:
+                      type: string
+                    AddressLine2:
+                      type: string
+                    AddressPostalCode:
+                      type: string
+                    AddressState:
+                      type: string
+                    AddressType:
+                      type: string
+                    ContactFirstName:
+                      type: string
+                    ContactLastName:
+                      type: string
+                    ContactPrimaryEmail:
+                      type: string
+                    ContactPrimaryTelephone:
+                      type: string
+                    ContactTitle:
+                      type: string
+                    ContactType:
+                      type: string
+              BillOfLading:
+                type: string
+              BrokerReference:
+                type: string
+              CarrierLookupCode:
+                type: string
+              CarrierServiceType:
+                type: string
+              Dates:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    Type:
+                      type: string
+                    Value:
+                      type: string
+              LoadContainerLookupCode:
+                type: string
+              LookupCode:
+                type: string
+              PalletCount:
+                type: string
+              PaymentTerm:
+                type: string
+              Priority:
+                type: string
+              ShipGrossWeight:
+                type: string
+              ShipmentNotes:
+                type: string
+              TrackingNumber:
+                type: string
+              TrailerNumber:
+                type: string
+              VesselName:
+                type: string
+              VesselReference:
+                type: string
+              WarehouseLookupCode:
+                type: string
+    RootShipmentConfFlowTest:
+      x-flow-type:
+        name: RootShipmentConf2
+      x-flow-query:
+        path: /shipment/Shipmentconfirmation/shipmentdetails
+        operation: get
+      properties:
+        OrderHeaders:
+          type: object
+          properties:
+            Addresses:
+              type: string
+        Test2:
+          type: integer
+        test3:
+          type: boolean
+    TestObject:
+      x-flow-type:
+        name: TestObject
+      x-flow-query:
+        path: /shipment/Shipmentconfirmation/shipmentdetails
+        operation: get
+      properties:
+        testingobject:
+          $ref: '#/components/schemas/RootShipmentConf'
+  securitySchemes:
+    X-API-Key:
+      type: apiKey
+      name: X-API-Key
+      in: header
+  responses:
+    "400":
+      description: Bad Request - There are miscellaneous errors with the request, for
+        example, mismatches between the request and what is allowed for the
+        operation.
+    "401":
+      description: Unauthorized or 403 Forbidden - Authentication errors.
+    "404":
+      description: Not Found - Invalid URL path.
+    "413":
+      description: Request Entity Too Large - The request data was too large. This is
+        based on the SOA Input Size quota.
+    "500":
+      description: Internal Server Error - This generic error message appears when an
+        unexpected condition was encountered and a more specific message is not
+        suitable.
+    "503":
+      description: Service Unavailable - The caller has hit a throttle or the request
+        was rejected because the Atom is starting or stopping.
+    "522":
+      description: Connection Timed Out - This message is returned to the client when
+        the SOA Worker Maximum Execution Time has been exceeded.
+    default:
+      description: Unidentified Exception
+security:
+  - X-API-Key: []
