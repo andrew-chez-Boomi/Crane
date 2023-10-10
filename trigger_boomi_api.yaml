@@ -56,14 +56,15 @@ components:
       x-flow-query:
         path: /trigger/triggerapi/process
         operation: get
+        parameters:
+                where: 
+                    apiconsumer: apiconsumer
       properties:
         Comments:
           type: string
         DateTime:
           type: string
         Status:
-          type: string
-        apiconsumer:
           type: string
   responses:
     default:
