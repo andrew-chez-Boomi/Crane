@@ -21,9 +21,10 @@ paths:
         - name: "apiconsumer"
           in: "query"
           description: "Pass api consumer key"
-          required: true
+          required: false
           schema:
             type: "string"
+            default: BOOMI_AWS_FLOW
       responses:
         '200':
           description: "Success"
@@ -55,9 +56,6 @@ components:
       x-flow-query:
         path: /trigger/triggerapi/process
         operation: get
-        parameters:
-          where:
-              apiconsumer: apiconsumer
       properties:
         Comments:
           type: string
