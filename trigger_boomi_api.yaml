@@ -7,11 +7,11 @@ info:
     email: "info@craneww.com"
   version: "1.0"
 servers:
-  - url: "https://api-uat.craneww.com/dev/ws/rest/v0/trigger/triggerapi/process"
+  - url: "https://api-uat.craneww.com/dev/ws/rest/v0"
 tags:
   - name: "triggerapi"
 paths:
-  /triggerapi/process:
+  /trigger/triggerapi/process:
     get:
       tags:
         - "triggerapi"
@@ -50,14 +50,18 @@ paths:
 components:
   schemas:
     BOOMI_APIM_Response:
-      type: "object"
+      x-flow-type:
+        name: BOOMI_APIM_Response
+      x-flow-query:
+        path: /trigger/triggerapi/process
+        operation: get
       properties:
         Comments:
-          type: "string"
+          type: string
         DateTime:
-          type: "string"
+          type: string
         Status:
-          type: "string"
+          type: string      
   responses:
     default:
       description: "Unidentified Exception"
