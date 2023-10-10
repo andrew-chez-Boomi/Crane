@@ -53,7 +53,7 @@ components:
       x-flow-type:
         name: BOOMI_APIM_Response
       x-flow-query:
-        path: /trigger/triggerapi/process
+        path: /trigger/triggerapi/process?apiconsumer=BOOMI_AWS_FLOW
         operation: get
       properties:
         Comments:
