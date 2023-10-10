@@ -61,7 +61,9 @@ components:
         DateTime:
           type: string
         Status:
-          type: string      
+          type: string
+        apiconsumer:
+          type: string
   responses:
     default:
       description: "Unidentified Exception"
