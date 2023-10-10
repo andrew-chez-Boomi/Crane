@@ -55,6 +55,9 @@ components:
       x-flow-query:
         path: /trigger/triggerapi/process
         operation: get
+        parameters:
+          where:
+              apiconsumer: apiconsumer
       properties:
         Comments:
           type: string
