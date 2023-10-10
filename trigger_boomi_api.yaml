@@ -1,0 +1,84 @@
+openapi: 3.0.1
+info:
+  title: "Call BOOMI integration process [internal Use only]"
+  description: "This is an API which can be used to call BOOMI process internally by other BOOMI integrations, Crane internal applications, BOOMI Flows etc.."
+  contact:
+    name: "Crane Worldwide Logistics"
+    email: "info@craneww.com"
+  version: "1.0"
+servers:
+  - url: "https://api-uat.craneww.com/dev/ws/rest/v0/trigger/triggerapi/process"
+tags:
+  - name: "triggerapi"
+paths:
+  /triggerapi/process:
+    get:
+      tags:
+        - "triggerapi"
+      summary: "[Process]BOOMI API Trigger"
+      description: "pass the api key id to call internal boomi process"
+      parameters:
+        - name: "apiconsumer"
+          in: "query"
+          description: "Pass api consumer key"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BOOMI_APIM_Response"
+        default:
+          $ref: "#/components/responses/default"
+        '400':
+          $ref: "#/components/responses/400"
+        '500':
+          $ref: "#/components/responses/500"
+        '522':
+          $ref: "#/components/responses/522"
+        '401':
+          $ref: "#/components/responses/401"
+        '413':
+          $ref: "#/components/responses/413"
+        '404':
+          $ref: "#/components/responses/404"
+        '503':
+          $ref: "#/components/responses/503"
+components:
+  schemas:
+    BOOMI_APIM_Response:
+      type: "object"
+      properties:
+        Comments:
+          type: "string"
+        DateTime:
+          type: "string"
+        Status:
+          type: "string"
+  responses:
+    default:
+      description: "Unidentified Exception"
+    '400':
+      description: "Bad Request - There are miscellaneous errors with the request, for example, mismatches between the request and what is allowed for the operation."
+    '500':
+      description: "Internal Server Error - This generic error message appears when an unexpected condition was encountered and a more specific message is not suitable."
+    '522':
+      description: "Connection Timed Out - This message is returned to the client when the SOA Worker Maximum Execution Time has been exceeded."
+    '401':
+      description: "Unauthorized or 403 Forbidden - Authentication errors."
+    '413':
+      description: "Request Entity Too Large - The request data was too large. This is based on the SOA Input Size quota."
+    '404':
+      description: "Not Found - Invalid URL path."
+    '503':
+      description: "Service Unavailable - The caller has hit a throttle or the request was rejected because the Atom is starting or stopping."
+  securitySchemes:
+    X-API-Key:
+      type: "apiKey"
+      name: "X-API-Key"
+      in: "header"
+security:
+  - X-API-Key: []
