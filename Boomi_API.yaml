@@ -10,7 +10,6 @@ servers:
   - url: "https://vm-boomi-rhel-dev-001.cranewwl.internal/ws/rest/v0"
 tags:
   - name: postdata
-  - name: triggerapi
 paths:
   /trigger/postdata/paylaod:
     post:
@@ -30,45 +29,87 @@ paths:
         content:
           application/json:
             schema:
-              type: string
+              type: array
+              items:
+                properties:
+                  amazon_id:
+                    type: string
+                  asset_id:
+                    type: string
+                  asset_category:
+                    type: string   
+                  demand_type:
+                    type: string
+                  item_description:
+                    type: string
+                  ipn:
+                    type: string
+                  request_id:
+                    type: string
+                  vendor:
+                    type: string
+                  updated_date:
+                    type: string
+                  created_date:
+                    type: string
+                  build_triggered_id:
+                    type: string
+                  data:
+                    type: string
+                  dimensions:
+                    type: array
+                    properties:
+                        length:
+                          type: string
+                        width:
+                          type: string
+                        height:
+                          type: string
+                        gross_weight:
+                          type: string
+                  delivery_window:
+                    type: array
+                    properties:
+                      start_date:
+                        type: string
+                      end_date:
+                        type: string
+                      expected_release_date:
+                        type: string
+                      estimated_pickup_ready_date:
+                        type: string
+                      ready_to_ship_date:
+                        type: string
+                      target_delivery_date:
+                        type: string
+                  shipment_details:
+                    type: array
+                    properties:
+                      ship_from:
+                        type: string
+                      ship_to:
+                        type: string
+                      ship_hold:
+                        type: string
+                      ship_hold_date:
+                        type: string
+                      ship_hold_comment:
+                        type: string
+                  locked:
+                    type: string
+                  status:
+                    type: string
+                  reason_code:
+                    type: string
+                  completed:
+                    type: string
+                  estimated_pickup_ready_date_1:
+                    type: string
+                  ship_from_1:
+                    type: string
+                  ship_to_1:
+                    type: string
         required: true
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BOOMI_APIM_Response"
-        default:
-          $ref: "#/components/responses/default"
-        "400":
-          $ref: "#/components/responses/400"
-        "500":
-          $ref: "#/components/responses/500"
-        "522":
-          $ref: "#/components/responses/522"
-        "401":
-          $ref: "#/components/responses/401"
-        "413":
-          $ref: "#/components/responses/413"
-        "404":
-          $ref: "#/components/responses/404"
-        "503":
-          $ref: "#/components/responses/503"
-  /trigger/triggerapi/process:
-    get:
-      tags:
-        - triggerapi
-      summary: "[Process]BOOMI API Trigger"
-      description: "pass the api key id to call internal boomi process"
-      parameters:
-        - name: apiconsumer
-          in: query
-          description: "Pass api consumer key"
-          required: false
-          schema:
-            type: string
-            default: BOOMI_AWS_FLOW
       responses:
         "200":
           description: Success
@@ -96,20 +137,94 @@ components:
   schemas:
     BOOMI_APIM_Response:
       x-flow-type:
-        name: BOOMI_APIM_Response
-      x-flow-query:
-        path: /trigger/triggerapi/process
-        operation: get
+        name: BOOMI_API_PAYLOAD
+      x-flow-save:
+        path: /trigger/postdata/paylaod
+        operation: Post
         parameters:
                     apiconsumer:
                         default: BOOMI_AWS_FLOW
       properties:
-        Comments:
-          type: string
-        DateTime:
-          type: string
-        Status:
-          type: string
+        awsassetdelay:
+          type: array
+          properties:
+            amazon_id:
+              type: string
+            asset_id:
+              type: string
+            asset_category:
+              type: string   
+            demand_type:
+              type: string
+            item_description:
+              type: string
+            ipn:
+              type: string
+            request_id:
+              type: string
+            vendor:
+              type: string
+            updated_date:
+              type: string
+            created_date:
+              type: string
+            build_triggered_id:
+              type: string
+            data:
+              type: string
+            dimensions:
+              type: array
+              properties:
+                  length:
+                    type: string
+                  width:
+                    type: string
+                  height:
+                    type: string
+                  gross_weight:
+                    type: string
+            delivery_window:
+              type: array
+              properties:
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+                expected_release_date:
+                  type: string
+                estimated_pickup_ready_date:
+                  type: string
+                ready_to_ship_date:
+                  type: string
+                target_delivery_date:
+                  type: string
+            shipment_details:
+              type: array
+              properties:
+                ship_from:
+                  type: string
+                ship_to:
+                  type: string
+                ship_hold:
+                  type: string
+                ship_hold_date:
+                  type: string
+                ship_hold_comment:
+                  type: string
+            locked:
+              type: string
+            status:
+              type: string
+            reason_code:
+              type: string
+            completed:
+              type: string
+            estimated_pickup_ready_date_1:
+              type: string
+            ship_from_1:
+              type: string
+            ship_to_1:
+              type: string
   responses:
     default:
       description: Unidentified Exception
