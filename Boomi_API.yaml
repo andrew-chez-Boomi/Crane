@@ -138,9 +138,9 @@ components:
     BOOMI_APIM_Response:
       x-flow-type:
         name: BOOMI_API_PAYLOAD
-      x-flow-save:
+      x-flow-update:
         path: /trigger/postdata/paylaod
-        operation: Post
+        operation: Put
         parameters:
                     apiconsumer:
                         default: BOOMI_AWS_FLOW
