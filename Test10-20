@@ -144,9 +144,8 @@ components:
         parameters:
                     apiconsumer:
                         default: BOOMI_AWS_FLOW
-      properties:
-        awsassetdelay:
-          type: string
+      customProperties:
+        awsassetdelay: string
   responses:
     default:
       description: Unidentified Exception
