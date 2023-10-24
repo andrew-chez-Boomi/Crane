@@ -97,7 +97,7 @@ components:
   schemas:
     BOOMI_APIM_Response:
       x-flow-type:
-        name: Test_Save_1
+        name: Test_Save_3
       x-flow-update:
         path: /trigger/postdata/paylaod
         operation: Put
