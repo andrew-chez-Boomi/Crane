@@ -29,47 +29,46 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                properties:
-                  amazon_id:
-                    type: string
-                  asset_id:
-                    type: string
-                  asset_category:
-                    type: string   
-                  demand_type:
-                    type: string
-                  item_description:
-                    type: string
-                  ipn:
-                    type: string
-                  request_id:
-                    type: string
-                  vendor:
-                    type: string
-                  updated_date:
-                    type: string
-                  created_date:
-                    type: string
-                  build_triggered_id:
-                    type: string
-                  data:
-                    type: string
-                  locked:
-                    type: string
-                  status:
-                    type: string
-                  reason_code:
-                    type: string
-                  completed:
-                    type: string
-                  estimated_pickup_ready_date_1:
-                    type: string
-                  ship_from_1:
-                    type: string
-                  ship_to_1:
-                    type: string
+              type: object
+              properties:
+                amazon_id:
+                  type: string
+                asset_id:
+                  type: string
+                asset_category:
+                  type: string   
+                demand_type:
+                  type: string
+                item_description:
+                  type: string
+                ipn:
+                  type: string
+                request_id:
+                  type: string
+                vendor:
+                  type: string
+                updated_date:
+                  type: string
+                created_date:
+                  type: string
+                build_triggered_id:
+                  type: string
+                data:
+                  type: string
+                locked:
+                  type: string
+                status:
+                  type: string
+                reason_code:
+                  type: string
+                completed:
+                  type: string
+                estimated_pickup_ready_date_1:
+                  type: string
+                ship_from_1:
+                  type: string
+                ship_to_1:
+                  type: string
         required: false
       responses:
         "200":
@@ -98,52 +97,52 @@ components:
   schemas:
     BOOMI_APIM_Response:
       x-flow-type:
-        name: BOOMI_API_PAYLOADv3
+        name: Test_Save_1
       x-flow-update:
         path: /trigger/postdata/paylaod
         operation: Put
         parameters:
                     apiconsumer:
                         default: BOOMI_AWS_FLOW
-      properties:
-            amazon_id:
-              type: string
-            asset_id:
-              type: string
-            asset_category:
-              type: string   
-            demand_type:
-              type: string
-            item_description:
-              type: string
-            ipn:
-              type: string
-            request_id:
-              type: string
-            vendor:
-              type: string
-            updated_date:
-              type: string
-            created_date:
-              type: string
-            build_triggered_id:
-              type: string
-            data:
-              type: string
-            locked:
-              type: string
-            status:
-              type: string
-            reason_code:
-              type: string
-            completed:
-              type: string
-            estimated_pickup_ready_date_1:
-              type: string
-            ship_from_1:
-              type: string
-            ship_to_1:
-              type: string
+        properties:
+          amazon_id:
+            type: string
+          asset_id:
+            type: string
+          asset_category:
+            type: string   
+          demand_type:
+            type: string
+          item_description:
+            type: string
+          ipn:
+            type: string
+          request_id:
+            type: string
+          vendor:
+            type: string
+          updated_date:
+            type: string
+          created_date:
+            type: string
+          build_triggered_id:
+            type: string
+          data:
+            type: string
+          locked:
+            type: string
+          status:
+            type: string
+          reason_code:
+            type: string
+          completed:
+            type: string
+          estimated_pickup_ready_date_1:
+            type: string
+          ship_from_1:
+            type: string
+          ship_to_1:
+            type: string
   responses:
     default:
       description: Unidentified Exception
