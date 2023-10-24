@@ -137,7 +137,7 @@ components:
   schemas:
     BOOMI_APIM_Response:
       x-flow-type:
-        name: BOOMI_API_PAYLOAD
+        name: BOOMI_API
       x-flow-update:
         path: /trigger/postdata/paylaod
         operation: Put
