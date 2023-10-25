@@ -7,7 +7,7 @@ info:
     email: info@craneww.com
   version: "1.0"
 servers:
-  - url: "https://vm-boomi-rhel-dev-001.cranewwl.internal/ws/rest/v0"
+  - url: "https://api-uat.craneww.com/dev/ws/rest/v0"
 tags:
   - name: postdata
 paths:
