@@ -1,0 +1,244 @@
+---
+openapi: 3.0.1
+info:
+  title: Call BOOMI integration prcess [internal Use only]
+  description: This is an API which can be used to call BOOMI process internally
+    by other BOOMI integrations, Crane internal applications, BOOMI Flows etc..
+  contact:
+    name: Crane Worldwide Logistics
+    email: info@craneww.com
+  version: "1.0"
+servers:
+  - url: https://api-uat.craneww.com/dev/ws/rest/v0
+tags:
+  - name: postdata
+paths:
+  /trigger/postdata/paylaod:
+    post:
+      tags:
+        - postdata
+      summary: "[Process] BOOMI API POST payload"
+      description: This end point is to send some paylaod jon/xml/csv to boomi process
+        so BOOMI process will take the inout paylaod and triggered.
+      parameters:
+        - name: apiconsumer
+          in: query
+          description: pass the api consumer
+          required: true
+          schema:
+            type: string
+            default: BOOMI_AWS_SUBMIT
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                amazon_id:
+                  type: string
+                asset_id:
+                  type: string
+                asset_category:
+                  type: string
+                demand_type:
+                  type: string
+                item_description:
+                  type: string
+                ipn:
+                  type: string
+                request_id:
+                  type: string
+                vendor:
+                  type: string
+                updated_date:
+                  type: string
+                created_date:
+                  type: string
+                build_triggered_id:
+                  type: string
+                data:
+                  type: string
+                length:
+                  type: string
+                width:
+                  type: string
+                height:
+                  type: string
+                gross_weight:
+                  type: string
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+                expected_release_date:
+                  type: string
+                estimated_pickup_ready_date:
+                  type: string
+                ready_to_ship_date:
+                  type: string
+                target_delivery_date:
+                  type: string
+                ship_from:
+                  type: string
+                ship_to:
+                  type: string
+                ship_hold:
+                  type: string
+                ship_hold_date:
+                  type: string
+                ship_hold_comment:
+                  type: string
+                locked:
+                  type: string
+                status:
+                  type: string
+                reason_code:
+                  type: string
+                completed:
+                  type: string
+                estimated_pickup_ready_date_1:
+                  type: string
+                ship_from_1:
+                  type: string
+                ship_to_1:
+                  type: string
+        required: false
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BOOMI_APIM_Response"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "404":
+          $ref: "#/components/responses/404"
+        "413":
+          $ref: "#/components/responses/413"
+        "500":
+          $ref: "#/components/responses/500"
+        "503":
+          $ref: "#/components/responses/503"
+        "522":
+          $ref: "#/components/responses/522"
+        default:
+          $ref: "#/components/responses/default"
+components:
+  schemas:
+    BOOMI_APIM_Response:
+      x-flow-type:
+        name: BOOMI_API_v8
+      x-flow-update:
+        path: /trigger/postdata/paylaod
+        operation: post
+        parameters:
+          apiconsumer:
+            default: BOOMI_AWS_SUBMIT
+      x-flow-save:
+        path: /trigger/postdata/paylaod
+        operation: post
+        parameters:
+          apiconsumer:
+            default: BOOMI_AWS_SUBMIT
+      properties:
+        amazon_id:
+          type: string
+        asset_id:
+          type: string
+        asset_category:
+          type: string
+        demand_type:
+          type: string
+        item_description:
+          type: string
+        ipn:
+          type: string
+        request_id:
+          type: string
+        vendor:
+          type: string
+        updated_date:
+          type: string
+        created_date:
+          type: string
+        build_triggered_id:
+          type: string
+        data:
+          type: string
+        length:
+          type: string
+        width:
+          type: string
+        height:
+          type: string
+        gross_weight:
+          type: string
+        start_date:
+          type: string
+        end_date:
+          type: string
+        expected_release_date:
+          type: string
+        estimated_pickup_ready_date:
+          type: string
+        ready_to_ship_date:
+          type: string
+        target_delivery_date:
+          type: string
+        ship_from:
+          type: string
+        ship_to:
+          type: string
+        ship_hold:
+          type: string
+        ship_hold_date:
+          type: string
+        ship_hold_comment:
+          type: string
+        locked:
+          type: string
+        status:
+          type: string
+        reason_code:
+          type: string
+        completed:
+          type: string
+        estimated_pickup_ready_date_1:
+          type: string
+        ship_from_1:
+          type: string
+        ship_to_1:
+          type: string
+  responses:
+    "400":
+      description: Bad Request - There are miscellaneous errors with the request, for
+        example, mismatches between the request and what is allowed for the
+        operation.
+    "401":
+      description: Unauthorized or 403 Forbidden - Authentication errors.
+    "404":
+      description: Not Found - Invalid URL path.
+    "413":
+      description: Request Entity Too Large - The request data was too large. This is
+        based on the SOA Input Size quota.
+    "500":
+      description: Internal Server Error - This generic error message appears when an
+        unexpected condition was encountered and a more specific message is not
+        suitable.
+    "503":
+      description: Service Unavailable - The caller has hit a throttle or the request
+        was rejected because the Atom is starting or stopping.
+    "522":
+      description: Connection Timed Out - This message is returned to the client when
+        the SOA Worker Maximum Execution Time has been exceeded.
+    default:
+      description: Unidentified Exception
+  securitySchemes:
+    X-API-Key:
+      type: apiKey
+      name: X-API-Key
+      in: header
+security:
+  - X-API-Key: []
