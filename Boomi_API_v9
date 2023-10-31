@@ -173,14 +173,14 @@ components:
           type: string
         data:
           type: string
-          length:
-            type: string
-          width:
-            type: string
-          height:
-            type: string
-          gross_weight:
-            type: string
+		length:
+		  type: string
+		width:
+		  type: string
+		height:
+		  type: string
+		gross_weight:
+		  type: string
         start_date:
           type: string
         end_date:
