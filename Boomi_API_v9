@@ -53,46 +53,37 @@ paths:
                 build_triggered_id:
                   type: string
                 data:
+			      type: string
+				length:
+				  type: string
+				width:
+				  type: string
+				height:
+				  type: string
+				gross_weight:
+				  type: string
+				start_date:
+				  type: string
+				end_date:
+				  type: string
+				expected_release_date:
+				  type: string
+				estimated_pickup_ready_date:
+				  type: string
+				ready_to_ship_date:
+				  type: string
+				target_delivery_date:
+				  type: string
+                ship_from:
                   type: string
-                dimensions:
-                  type: array
-                  properties:
-                      length:
-                        type: string
-                      width:
-                        type: string
-                      height:
-                        type: string
-                      gross_weight:
-                        type: string
-                delivery_window:
-                  type: array
-                  properties:
-                    start_date:
-                      type: string
-                    end_date:
-                      type: string
-                    expected_release_date:
-                      type: string
-                    estimated_pickup_ready_date:
-                      type: string
-                    ready_to_ship_date:
-                      type: string
-                    target_delivery_date:
-                      type: string
-                shipment_details:
-                  type: array
-                  properties:
-                    ship_from:
-                      type: string
-                    ship_to:
-                      type: string
-                    ship_hold:
-                      type: string
-                    ship_hold_date:
-                      type: string
-                    ship_hold_comment:
-                      type: string
+                ship_to:
+                  type: string
+                ship_hold
+                  type: string
+                ship_hold_date:
+                  type: string
+                ship_hold_comment:
+                  type: string
                 locked:
                   type: string
                 status:
